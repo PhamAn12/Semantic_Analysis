@@ -16,3 +16,13 @@ class DataSource(object):
                     arrayLabel.append(line)
         mat = np.array(arrayLabel)
         return mat
+
+    def load_file(self, path):
+        f = open(path, "r")
+        if f.mode == "r":
+            lines = f.readlines()
+            arr_data = []
+            for line in lines:
+                arr_data.append(line)
+        np_arr_data = np.array(arr_data)
+        return np_arr_data
