@@ -22,13 +22,31 @@ def create_vi_file(name_file, label):
     f = open(name_file, "w+")
     np_temp_array = classify_lang(label)
     for line in np_temp_array:
-        f.write(label+line)
+        f.write(label + line)
     f.close()
 
 
+def create_train_test_file():
+    ds = DataSource()
+    X_train, X_test, y_train, y_test = ds.train_test_split()
+    print(X_train.size)
+    print(y_train.size)
+    print(X_test.size)
+    f_train = open("train_data", "w+")
+    for i in range(X_train.size):
+        f_train.write(y_train[i] + X_train[i])
+    f_train.close()
+
+    f_test = open("test_data", "w+")
+    for i in range(X_test.size):
+        f_test.write(X_test[i])
+    f_test.close()
+
+
 if __name__ == '__main__':
-    create_vi_file("rat_kem_non_vi", "__label__rat_kem")
-    create_vi_file("kem_non_vi", "__label__kem")
-    create_vi_file("tot_non_vi", "__label__tot")
-    create_vi_file("trung_binh_non_vi", "__label__trung_binh")
-    create_vi_file("xuat_sac_non_vi", "__label__xuat_sac")
+    create_train_test_file()
+    # create_vi_file("rat_kem_non_vi", "__label__rat_kem")
+    # create_vi_file("kem_non_vi", "__label__kem")
+    # create_vi_file("tot_non_vi", "__label__tot")
+    # create_vi_file("trung_binh_non_vi", "__label__trung_binh")
+    # create_vi_file("xuat_sac_non_vi", "__label__xuat_sac")
