@@ -1,5 +1,22 @@
 import matplotlib.pyplot as plt
+from bs4 import BeautifulSoup
+import lxml.html
+from pyvi import ViTokenizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from underthesea import word_tokenize, pos_tag
+from pyvi import ViUtils
+import nltk
+# nltk.download('punkt')
 from readData import DataSource
+from preprocess import util
+import string
+import re
+from langdetect import detect
+from aiogoogletrans import Translator
+from mtranslate import translate
+import polyglot
+from polyglot.text import Text, Word
+import asyncio
 
 
 def visualize():
@@ -21,5 +38,26 @@ def visualize():
     plt.show()
 
 
+def identity_tokenizer(text):
+    return text
+
+
 if __name__ == '__main__':
-    visualize()
+    # print(list(string.punctuation))
+    # a = word_tokenize("Dịch vụ Tốt")
+    # b = pos_tag('Chợ thịt chó nổi tiếng ở Sài Gòn, Hà Nội bị truy quét')
+    # c = " nhiet tinh"
+    #
+    # print (ViUtils.add_accents(c))
+    # r = '[òóọỏõôồốộổỗơờớợởỡ]'
+    # regexp = re.compile(r'[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ]')
+    # if regexp.search(c):
+    #     print("matched")
+
+    Util = util()
+    s = Util.text_util_final("Vị trí tốt, Sapa nhỏ nên dễ di chuyển Khách sạn ok, phù hợp đi chơi nhóm. Nhận xét cũng phải 50 kí tự mới được à? . Cũng ok")
+    print(string.punctuation)
+    a = str(string.punctuation)
+    print(len(a))
+    print(s)
+    # print(b)

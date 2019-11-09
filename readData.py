@@ -6,7 +6,7 @@ class DataSource(object):
     def train_test_split(self):
 
         global raw_data, label_data
-        f = open("data/data_train.txt", "r")
+        f = open("data/main_data/final_data", "r")
         if f.mode == "r":
             lines = f.readlines()
             raw_data = []
@@ -27,7 +27,7 @@ class DataSource(object):
                 elif line.startswith("__label__xuat_sac"):
                     raw_data.append(line[17:])
                     label_data.append(line[:17])
-        X_train, X_test, y_train, y_test = train_test_split(raw_data, label_data, test_size=0.33, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(raw_data, label_data, test_size=0.2, random_state=42)
         np_X_train = np.array(X_train)
         np_X_test = np.array(X_test)
         np_y_train = np.array(y_train)
@@ -36,7 +36,7 @@ class DataSource(object):
 
     def loadData(self, label):
 
-        f = open("data/data_train.txt", "r")
+        f = open("data/data_thay.txt", "r")
         if f.mode == "r":
 
             lines = f.readlines()
