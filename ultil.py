@@ -9,7 +9,7 @@ import time
 def Pre_Process():
     ds = DataSource()
     count = 1
-    # train_data = ds.load_file("data/data_thay.txt")
+    # train_data = ds.load_file("data/main_data/data_thay.txt")
     train_data = ds.load_file("data/main_data/train_data_final")
     translator = Translator()
     # train_data = train_data[0:100]
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     X_train, yyy_train = Pre_Process()
 
     # f_train = open("train_data_vi", "w+")
-    f_train = open("data_thay_vi", "w+")
+    f_train = open("data_test_vi_111", "w+")
     for i in range(X_train.size):
         f_train.write(yyy_train[i] + X_train[i])
     f_train.close()

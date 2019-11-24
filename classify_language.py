@@ -33,25 +33,27 @@ def create_train_test_file():
     print(X_train.size)
     print(y_train.size)
     print(X_test.size)
-    f_train = open("train_data_final", "w+")
+    f_train = open("train_data_final_1", "w+")
     for i in range(X_train.size):
         f_train.write(y_train[i] + X_train[i])
     f_train.close()
 
-    f_test = open("test_data_final", "w+")
+    f_test = open("test_data_final_1", "w+")
     for i in range(X_test.size):
         f_test.write(X_test[i])
     f_test.close()
 
 
 def translate_file(path):
-    arr_end_word = ['Chấp nhận được\n', 'Rất tốt\n', 'Tuyệt vời\n', 'Xuất sắc\n', 'Tuyệt hảo\n', 'Tốt\n', 'Tuyệt hảo',
-                    'Xuất sắc', 'Tàm tạm\n','Dễ chịu\n', 'Dễ chịu', 'Thất vọng\n','Thất vọng','Kém\n','Kém']
+    arr_end_word = ['Chấp nhận được', 'Rất tốt', 'Tuyệt vời', 'Xuất sắc', 'Tốt', 'Tuyệt hảo',
+                 'Tàm tạm','Dễ chịu', 'Dễ chịu', 'Thất vọng','Kém']
     ds = DataSource()
     arr = ds.load_file(path)
     # arr = arr[0:100]
-    f_train = open("test_data_vi", "w+")
-    for line in arr:
+    f_train = open("test_data_vi_final_2", "w+")
+    for l in arr:
+        lines = str(l)
+        line = lines.strip()
         if detect(line) != "vi":
             str_line = str(line)
             # print(str_line)
@@ -74,8 +76,8 @@ def translate_file(path):
 
 
 if __name__ == '__main__':
-    create_train_test_file()
-    # translate_file('data/test_data')
+    # create_train_test_file()
+    translate_file('data/main_data/sentiment_analysis_test.txt')
     # create_vi_file("rat_kem_non_vi", "__label__rat_kem")
     # create_vi_file("kem_non_vi", "__label__kem")
     # create_vi_file("tot_non_vi", "__label__tot")

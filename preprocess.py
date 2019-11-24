@@ -12,12 +12,12 @@ dict = [["ship", "vận chuyển"], ["shop", "cửa hàng"], ["m", "mình"], ["m
         ["ks", "khách sạn"], ['deluxe', 'sang trọng'], ['seeview ', 'see view'], ['superior', 'cao cấp'],
         ["comment", "bình luận"], ["comments", "bình luận"], ["twin", "phòng đôi"], ['WC', 'nhà vệ sinh'],
         ['toilet', 'nhà vệ '
-                   'sinh'],
+                   'sinh'],['boke','đặt'],
         ['Toilet', 'nhà vệ sinh'], ['feedback', 'phản hồi'], ['Danh gia', 'Đánh giá'],
         ['b&atildei', 'bãi'], ['&nbspsẽ', ' sẽ'], ['r&atildei', 'rãi'],
         ["good", "tốt"], ["Resort", "Khu nghỉ dưỡng"], ["Ks", "khách sạn"], ["KS", "khách sạn"], ["ko", "không"],
         ["View", "cảnh"],
-        ["kg", "không"], ["ok", "tốt"], ["ks", "khách sạn"], ["Ko", "không"], ["kO", "không"],
+        ["kg", "không"], ['ok','tốt'], ["ks", "khách sạn"], ["Ko", "không"], ["kO", "không"],
         ["k", "không"], ["Nice view", "cảnh đẹp"],
         ["Relax", "thư giãn"],
         ["NV", "nhân viên"],
@@ -111,7 +111,7 @@ class util():
     def remove(self, text):  # remove cac ky tu keo dai vd: "cai ao nay dep quaaaaaa" : "cai ao nay dep qua"
 
         text = ''.join([i for i in text if not i.isdigit()])
-        return text
+        return text.strip()
 
     def A_cvt_a(self, text):  # chuyen cac ky tu viet hoa ve cac ky tu viet thuong
         text = text.lower()
@@ -143,9 +143,10 @@ class util():
         new_string = re.sub(pattern, ' ', new_string)
         return new_string
     def text_util_final(self, text):
-        # text = self.remove(text)
-        # text = self.removepuctual(text)
-        # text = self.remove_html(text)
+        text = self.remove(text)
+        text = self.remove_html(text)
+        text = self.removepuctual(text)
         # text = self.A_cvt_a(text)
         text = self.utils_data(text)
+
         return text

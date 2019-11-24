@@ -49,15 +49,26 @@ if __name__ == '__main__':
     # c = " nhiet tinh"
     #
     # print (ViUtils.add_accents(c))
-    # r = '[òóọỏõôồốộổỗơờớợởỡ]'
+    # r = '[òóọỏõôồốộổỗơờớợởỡ]'i
     # regexp = re.compile(r'[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ]')
     # if regexp.search(c):
     #     print("matched")
+    # text = 'fhsjkdfh*&^%???///:))jkdfhskdjfhf jfdfjd ) kd'
+    # new_string = text.translate(text.maketrans(string.punctuation, '                                '))
+    # pattern = re.compile(r'\s+')
+    # new_string = re.sub(pattern, ' ', new_string)
+    # print(new_string)
 
-    Util = util()
-    s = Util.text_util_final("Vị trí tốt, Sapa nhỏ nên dễ di chuyển Khách sạn ok, phù hợp đi chơi nhóm. Nhận xét cũng phải 50 kí tự mới được à? . Cũng ok")
-    print(string.punctuation)
-    a = str(string.punctuation)
-    print(len(a))
-    print(s)
+    f = open("data/main_data/sentiment_analysis_test.txt", "r")
+    count = 0
+    if f.mode == "r":
+        lines = f.readlines()
+        for line in lines:
+            line = line.strip()
+
+            if line.endswith('Tàm tạm\n') or line.endswith('Dễ chịu\n') \
+                        or line.endswith('Chấp nhận được\n') or line.endswith('Tàm tạm') or line.endswith('Dễ chịu') or line.endswith('Chấp nhận được'):
+                count = count + 1
+                # print(count)
+    print(count)
     # print(b)
